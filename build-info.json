@@ -1,0 +1,11 @@
+{
+  "version": "0.12.35-test-b",
+  "pack": "forge-test-b-967df66fa97e5b83.pck",
+  "pack_sha256": "967df66fa97e5b83ae02a5dcdb594cf24d5cea4c4d8ecdad4aa4e4052ef159fd",
+  "pack_bytes": 14626228,
+  "entry_path": "index.html?build=967df66fa97e5b83&view=home",
+  "published": true,
+  "variant": "probability-test-b",
+  "based_on_pack_sha256": "801fed6b72b9d6bdc28db308999151fdca8b435ea6862be615ab08af86ca0ed1",
+  "hosting_variant": "compressed-web-v3"
+}

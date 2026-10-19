@@ -1,0 +1,13 @@
+/*
+  X-Content-Type-Options: nosniff
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: same-origin
+/index.wasm.gz
+  Content-Type: application/gzip
+/*.pck
+  Content-Type: application/octet-stream
+/index.html
+  Cache-Control: no-cache
+/
+  Cache-Control: no-cache
