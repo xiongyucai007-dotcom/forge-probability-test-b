@@ -1,0 +1,15 @@
+铸器坊 · 音效来源
+
+hammer.wav：改编自真实铁锤敲砧录音 Blacksmith's Hammer，作者 VishwaJai。
+来源：https://opengameart.org/content/blacksmiths-hammer
+原始下载：https://opengameart.org/sites/default/files/blacksmithhammer.wav
+许可：CC0 1.0 Universal；完整许可见 LICENSE-CC0.txt。感谢原作者。
+
+处理：裁剪与采样率转换、轻微均衡/压缩、响度与边界淡化；保留原始真实撞击和金属余响。未叠加振荡器合成钟音。
+原文件、处理脚本及哈希说明见 source/ 和 audio-manifest.json。source/ 仅随可编辑工程交付，不进入运行资源包。
+
+legendary_voice.mp3：用户提供的《哇_金色传说_网络原声.mp3》，原件直接接入，未转码、未裁剪。最终共鸣结束、金色传说出炉时播放，使用独立声道保留完整原声。
+
+failure.wav：武器断裂提示，组合本项目的碎裂声、以上CC0铁砧录音的降调片段及下降的低频冲击音。独立播放，不包含语音；铁砧片段沿用上述作者及CC0来源记录。
+
+其他成功、损伤、断裂、进阶等音效为本项目生成，与用户提供的原声和真实落锤录音分别记录。

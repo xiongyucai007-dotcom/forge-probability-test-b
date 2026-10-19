@@ -1,0 +1,17 @@
+铸器坊 · Effekseer 特效来源与渲染记录
+
+forge-hit、forge-ascend、forge-legendary 的节点编排、寿命、速度、尺寸、延迟和配色由本项目新建，使用官方 Effekseer 1.70e 编译为 SKFE1710。
+三套图集已由 EffekseerForGodot4 1.70e.10 在独立 Godot 4.5.1、Windows OpenGL Compatibility 渲染窗口中实际生成并完成目检。生产游戏仅播放这些 PNG 图集，未包含原生 Effekseer 插件。
+
+v2 使用的未修改软光纹理 Texture/glow.png 来自官方 Effekseer 1.70e Windows 发行包 Sample/01_AndrewFM01/Texture/，贡献者 AndrewFM，样例许可为 CC0。可编辑源中同时保留原始 double-shockwave.png 备用纹理，未参与当前 v2 渲染。
+官方发布：https://github.com/effekseer/Effekseer/releases/tag/170e
+工具源代码：https://github.com/effekseer/Effekseer
+插件发布：https://github.com/effekseer/EffekseerForGodot4/releases/tag/1.70e.10
+
+Effekseer 工具及插件代码采用 MIT 许可；完整版权与第三方通知以随附原文为准。感谢 Effekseer Project 和 AndrewFM。
+许可原文：LICENSE-SAMPLES-CC0.txt、LICENSE-EFFEKSEER-TOOL.txt、LICENSE-EFFEKSEER-PLUGIN.txt；source/licenses/ 内另有对应副本。
+
+可编辑 .efkproj、编译结果 .efkefc/.efk、作者脚本与纹理位于 source/。
+真实渲染记录、源文件/原生库/图集 SHA-256、帧时间、scale/origin 和渲染器日志位于 source/evidence/。
+source/evidence/*-add-preview.png 是正确 ADD 混合后的不透明预览。最终透明图集采用 A=maxRGB、RGB除A 的表示，回放 RGB×A 与全部72张原始渲染帧的光贡献逐字节一致。
+以上文档路径均以 assets/fx/effekseer/ 为基准。
