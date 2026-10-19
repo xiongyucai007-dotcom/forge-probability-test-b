@@ -1,11 +1,14 @@
 {
   "version": "0.12.35-test-b",
-  "pack": "forge-test-b-967df66fa97e5b83.pck",
-  "pack_sha256": "967df66fa97e5b83ae02a5dcdb594cf24d5cea4c4d8ecdad4aa4e4052ef159fd",
-  "pack_bytes": 14626228,
-  "entry_path": "index.html?build=967df66fa97e5b83&view=home",
-  "published": true,
+  "pack": "forge-ux-b-2268db66832cf908.pck",
+  "pack_sha256": "2268db66832cf908a110b5aea6b2a4474acab399ef6ca1556dd944bdffc51a71",
+  "pack_bytes": 15389844,
+  "entry_path": "index.html?build=2268db66832cf908&view=home",
+  "published": false,
   "variant": "probability-test-b",
-  "based_on_pack_sha256": "801fed6b72b9d6bdc28db308999151fdca8b435ea6862be615ab08af86ca0ed1",
-  "hosting_variant": "compressed-web-v3"
+  "based_on_pack_sha256": "8215175c61e44c9d77ae7665e766cfb30589679a76d5adc1be44dd86867e9e62",
+  "hosting_variant": "compressed-web-v3",
+  "audio_version": 2,
+  "background_music": false,
+  "ux_version": 1
 }
