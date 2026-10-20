@@ -1,0 +1,18 @@
+铸器坊 · 购买与锻造音效040
+
+原始实录：Fantasy Accessory SFX Library
+作者：Vehicle（Jan Schupke）
+来源：https://opengameart.org/content/fantasy-accessory-sfx-library
+下载：https://opengameart.org/sites/default/files/accessory.zip
+许可：Creative Commons Zero / CC0 1.0 Universal
+许可地址：https://creativecommons.org/publicdomain/zero/1.0/
+官方作品页与素材压缩包内readme均确认CC0。
+
+锻造成功共鸣原始实录：Blacksmith's Hammer，作者 VishwaJai
+来源：https://opengameart.org/content/blacksmiths-hammer
+许可：CC0 1.0 Universal；当前工程已有的原始铁砧录音保持原字节，仅取片段派生。
+
+使用真实 coinflip、coins-shake 钱币录音及 wood-bowl-hit-wood-spoon 木器录音。
+改动：短段剪辑、三次钱币收拢/双木顿重排、轻微变速、尖瞬态柔化、温润滤波、首尾淡出、峰值余量、32kHz单声道OGG。
+未使用电子提示音、合成beep或背景音乐；锻造成功只用真实铁砧接触和金属余响。
+来源文件哈希、精确剪辑参数及最终解码指标见 audio-040-metrics.json。

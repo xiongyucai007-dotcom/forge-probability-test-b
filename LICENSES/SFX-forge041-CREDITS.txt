@@ -1,0 +1,14 @@
+铸器坊 · 钢铁锻造音效同族041
+
+主要实录：Blacksmith's Hammer / VishwaJai
+https://opengameart.org/content/blacksmiths-hammer
+材质补层：Fantasy Accessory SFX Library / Vehicle (Jan Schupke)
+https://opengameart.org/content/fantasy-accessory-sfx-library
+两项均为CC0 1.0 Universal；官方作品页及Accessory ZIP内readme已核验。
+https://creativecommons.org/publicdomain/zero/1.0/
+
+制作：真实铁砧接触/余响为共同钢铁指纹，真实木器低频接触和短金属滑擦/碎件落定作补层。
+处理含短段剪辑、微量变速、EQ、针状瞬态柔化、时包络、短反向实录余响、峰值/响度统一、首尾平滑。
+无正弦音阶/电子beep/合成旋律，不加背景音乐，不含用户语音。
+040购买、页面导航、原用户语音与源工程均未修改。
+精确参数、全部来源哈希及最终OGG解码指标见audio-041-metrics.json。

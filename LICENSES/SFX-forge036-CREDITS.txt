@@ -1,0 +1,9 @@
+铸器坊 · 音效优化036
+
+落锤及部分金属瞬态改编自 CC0 录音 Blacksmith's Hammer，作者 VishwaJai。
+来源：https://opengameart.org/content/blacksmiths-hammer
+CC0 全文见 assets/sfx/LICENSE-CC0.txt 及本地包 LICENSES/SFX-CC0.txt。
+其他材质短声由确定性滤波噪声、阻尼模态和原始实录重组制作。
+用户提供的“哇，金色传说”原始MP3保持原字节，仅调整播放增益及背景压低。
+本版没有新增背景音乐。
+详细素材哈希、处理和混音参数见 assets/sfx/audio-manifest.json。

@@ -1,0 +1,31 @@
+Forge Game 063 - current audio source index
+
+The five SFX-forgeXXX-CREDITS.txt files in this folder are exact, unedited
+copies extracted from the current 063 game's corresponding packed credits.
+Their original author, source and license statements have been preserved.
+
+Blacksmith's Hammer
+Author: VishwaJai
+Source: https://opengameart.org/content/blacksmiths-hammer
+Original download: https://opengameart.org/sites/default/files/blacksmithhammer.wav
+License stated in the original credits: CC0 1.0 Universal
+Used/processed in forge036, forge040, forge041 and forge042.
+
+Fantasy Accessory SFX Library
+Author: Vehicle (Jan Schupke)
+Source: https://opengameart.org/content/fantasy-accessory-sfx-library
+Original download: https://opengameart.org/sites/default/files/accessory.zip
+License stated in the original credits: CC0 1.0 Universal
+Used/processed in forge040, forge041 and forge042.
+
+CC0 source and full text:
+https://creativecommons.org/publicdomain/zero/1.0/
+See SFX-CC0.txt in this folder.
+
+forge039 navigation/confirmation sounds are original project-generated audio;
+the original forge039 credits describe their synthesis and processing.
+
+The original legendary voice was provided by the user. Its existing credit
+remains in SFX-ATTRIBUTION.txt and in the game's audio manifest.
+The 063 sale animation reuses the existing reward audio family; it introduces
+no additional audio recording or background music.

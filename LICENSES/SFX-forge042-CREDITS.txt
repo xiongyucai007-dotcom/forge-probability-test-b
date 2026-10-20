@@ -1,0 +1,14 @@
+铸器坊 · 正向奖励音色家族042
+
+材质实录：Fantasy Accessory SFX Library / Vehicle (Jan Schupke)
+https://opengameart.org/content/fantasy-accessory-sfx-library
+少量真实金属余响：Blacksmith's Hammer / VishwaJai
+https://opengameart.org/content/blacksmiths-hammer
+两项均为CC0 1.0 Universal，官方作品页及Accessory压缩包内readme已核验。
+https://creativecommons.org/publicdomain/zero/1.0/
+
+另含原创声音设计：使用真实小玻璃接触激励短促、非等律晶莹共振，重叠微升泛音制造RPG奖励获得感。
+处理：短段剪辑、去尖峰、柔落定、受控短共振、温润EQ、首尾平滑、传奇为原声退让26dB。
+不是购买三枚钱币落袋，不是敲铁成功音，不含纯beep旋律、背景音乐或语音。
+041负面/落锤/共鸣/收工、040购买、页面导航及用户原声均保持原样。
+来源哈希、完整参数和最终OGG解码指标见audio-042-metrics.json；生成脚本可重建。
