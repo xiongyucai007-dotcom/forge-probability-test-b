@@ -1,0 +1,38 @@
+﻿音效候选编号表
+全部是从 Kenney 官方下载的真实素材；没有沿用之前的合成点击音，也没有背景音乐。
+三个视频：点击 C1–C6；领取/确认 R1–R4；钱币/筹码 G1–G3。每个候选播放两次。
+G3 是筹码堆叠，不是硬币录音。类别是建议用途，最终请按试听选择。
+试听仅做固定音量调整，最多提升6dB，峰值不超过约-6dBFS。没有变调、合成或动态压缩。ZIP中的OGG保持官方原始字节。
+可免费用于商业游戏，CC0；署名不是必须。各素材包原始 License.txt 随附。
+这些只是候选，尚未替换或发布到游戏。
+技术校验：转码、时长、峰值、文件哈希；未进行主观听感确认。
+
+C1 | 界面点击 | interface/Audio/click_001.ogg | 0.097秒 | 试听增益-1.6dB
+https://kenney.nl/assets/interface-sounds
+C2 | 按键 A | ui/Audio/click1.ogg | 0.091秒 | 试听增益-4.6dB
+https://kenney.nl/assets/ui-audio
+C3 | 按键 B | ui/Audio/click2.ogg | 0.053秒 | 试听增益-4.8dB
+https://kenney.nl/assets/ui-audio
+C4 | 鼠标点击 | ui/Audio/mouseclick1.ogg | 0.056秒 | 试听增益-4.2dB
+https://kenney.nl/assets/ui-audio
+C5 | 金属点击 | rpg/Audio/metalClick.ogg | 0.446秒 | 试听增益+0.9dB
+https://kenney.nl/assets/rpg-audio
+C6 | 合书触感 | rpg/Audio/bookClose.ogg | 0.231秒 | 试听增益-6.9dB
+https://kenney.nl/assets/rpg-audio
+R1 | 确认提示 1 | interface/Audio/confirmation_001.ogg | 0.290秒 | 试听增益-2.1dB
+https://kenney.nl/assets/interface-sounds
+R2 | 确认提示 2 | interface/Audio/confirmation_002.ogg | 0.539秒 | 试听增益-2.1dB
+https://kenney.nl/assets/interface-sounds
+R3 | 确认提示 3 | interface/Audio/confirmation_003.ogg | 0.322秒 | 试听增益-2.0dB
+https://kenney.nl/assets/interface-sounds
+R4 | 确认提示 4 | interface/Audio/confirmation_004.ogg | 0.490秒 | 试听增益-2.1dB
+https://kenney.nl/assets/interface-sounds
+G1 | 钱币 A | rpg/Audio/handleCoins.ogg | 0.846秒 | 试听增益-6.2dB
+https://kenney.nl/assets/rpg-audio
+G2 | 钱币 B | rpg/Audio/handleCoins2.ogg | 0.338秒 | 试听增益+4.7dB
+https://kenney.nl/assets/rpg-audio
+G3 | 筹码堆叠 | casino/Audio/chips-stack-1.ogg | 0.285秒 | 试听增益-4.9dB
+https://kenney.nl/assets/casino-audio
+
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+Kenney使用说明: https://kenney.nl/support
