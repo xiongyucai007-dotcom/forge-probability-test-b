@@ -1,117 +1,153 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>铸器坊 · 铁匠与侠客</title>
-		<style>
-html, body, #canvas {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#11191e">
+<title>铸器坊 · 铁匠与侠客</title>
+<style>html,body,#canvas{margin:0;padding:0;border:0}
+body{color:#eee5cf;background:#000;overflow:hidden;touch-action:none}
+#canvas{display:block}#canvas:focus{outline:none}
+#status{position:fixed;inset:0;z-index:10;display:flex;justify-content:center;align-items:flex-start;background:#000;color:#e9dec7;font-family:"Microsoft YaHei","PingFang SC",sans-serif;overflow:auto;touch-action:pan-y;opacity:1;transition:opacity .18s ease}
+#status.is-ready{opacity:0;pointer-events:none}
+.loading-stage{box-sizing:border-box;position:relative;isolation:isolate;width:min(100vw,45vh);width:min(100vw,45svh);min-height:100vh;min-height:100svh;padding:max(24px,env(safe-area-inset-top)) 24px max(24px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;overflow:hidden;background:radial-gradient(ellipse at 50% 95%,#713c202e,transparent 63%),linear-gradient(180deg,#11191e,#192226 50%,#10171b);border-inline:1px solid #61503a55}
+.loading-stage:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.34;background-image:linear-gradient(0deg,transparent 96%,#070c0e 97%),linear-gradient(90deg,transparent 97%,#070c0e 98%);background-size:100% 76px,115px 152px;mask-image:linear-gradient(transparent,#000 35%,#000 85%,transparent)}
+.loading-stage:after{content:"";position:absolute;bottom:0;left:8%;right:8%;height:32%;z-index:-1;opacity:.65;background:radial-gradient(ellipse at 50% 100%,#e2943538,transparent 69%);animation:hearth 3.2s ease-in-out infinite alternate}
+.forge-emblem{position:relative;display:grid;place-items:center;width:164px;height:164px;margin-bottom:8px;flex:none}
+.forge-emblem:before{content:"";position:absolute;inset:-16px;border:1px solid #b789454a;border-radius:50%;box-shadow:0 0 50px #cb702019,inset 0 0 30px #1a0d00}
+.forge-emblem:after{content:"";position:absolute;inset:-23px;border:1px solid #a17b3220;border-radius:50%}
+.forge-emblem img{display:block;width:136px;height:136px;border-radius:24%;filter:drop-shadow(0 12px 14px #0008);user-select:none;-webkit-user-drag:none}
+.spark{position:absolute;width:3px;height:3px;border-radius:1px;background:#f4be65;box-shadow:0 0 8px #ef9b42;opacity:0;animation:embers 3.4s ease-out infinite;pointer-events:none}
+.spark:nth-of-type(1){left:22%;bottom:8%;animation-delay:-.6s}.spark:nth-of-type(2){left:72%;bottom:10%;animation-delay:-2s}.spark:nth-of-type(3){left:45%;bottom:4%;animation-delay:-1.5s}.spark:nth-of-type(4){left:82%;bottom:20%;animation-delay:-2.8s}
+.loading-title{margin:12px 0 0;color:#edcf8b;font-family:"Songti SC","SimSun",serif;font-size:clamp(28px,10vw,40px);font-weight:700;letter-spacing:.16em;text-indent:.16em;line-height:1.25;text-shadow:0 2px 1px #090c0e}
+.loading-subtitle{display:flex;align-items:center;gap:12px;margin:0;color:#a79b80;font-size:12px;letter-spacing:.2em;line-height:1.6}
+.loading-subtitle:before,.loading-subtitle:after{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#92723f)}.loading-subtitle:after{transform:rotate(180deg)}
+#loading-information{width:100%;max-width:260px;margin-top:30px}
+.progress-track{position:relative;height:8px;padding:2px;border:1px solid #806333;border-radius:8px;background:#080f13;box-shadow:inset 0 1px 4px #0009;overflow:hidden}
+#loading-fill{display:block;width:0;height:100%;border-radius:4px;background:linear-gradient(90deg,#966024,#f2c26b);box-shadow:0 0 10px #edbb565c;transition:width .16s linear}
+.progress-track[data-indeterminate="true"] #loading-fill{width:38%;animation:waiting 1.6s ease-in-out infinite alternate}
+.progress-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px;font-size:12px;line-height:1.5;color:#b9ad91;font-variant-numeric:tabular-nums}
+#loading-phase{margin:0}#loading-percent{color:#dfc28a}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#status-notice{box-sizing:border-box;width:100%;max-width:280px;padding:18px 16px;margin-top:16px;border:1px solid #80603d;border-radius:8px;background:#151b1feb;box-shadow:0 12px 30px #0005;text-align:center;overflow-wrap:anywhere}
+#status-notice[hidden],#loading-information[hidden]{display:none}
+#notice-title{margin:0 0 10px;font-size:17px;color:#e4c086}#notice-message{font-size:13px;line-height:1.7;margin:0;color:#c9bea6}
+#status-notice details{margin:12px 0;color:#a99a82;font-size:12px;text-align:left}#status-notice summary{cursor:pointer;min-height:28px;line-height:28px}
+#notice-detail{max-height:120px;overflow:auto;margin:8px 0 0;padding:8px;background:#090f13;border-radius:3px;white-space:pre-wrap;font:11px/1.5 monospace;touch-action:pan-y}
+#loading-retry{width:100%;min-height:44px;padding:10px 16px;border:1px solid #e2bb71;border-radius:4px;background:linear-gradient(#ac7c33,#8c5e25);color:#fff0ce;font-family:inherit;font-size:15px;font-weight:600;line-height:1.4;cursor:pointer;margin-top:10px}
+#loading-retry:hover{filter:brightness(1.1)}#loading-retry:focus-visible{outline:2px solid #ffdfa0;outline-offset:4px}
+.no-js{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;color:#e4c086;background:#11191e;font:16px/1.8 sans-serif;text-align:center}
+@keyframes embers{0%{opacity:0;transform:translateY(8px)}18%{opacity:.7}100%{opacity:0;transform:translate(9px,-90px)}}
+@keyframes hearth{to{opacity:.95}}@keyframes waiting{from{transform:translateX(-5%)}to{transform:translateX(168%)}}
+@media(max-height:520px){.loading-stage{gap:10px;padding-top:max(14px,env(safe-area-inset-top));padding-bottom:max(14px,env(safe-area-inset-bottom))}.forge-emblem{width:96px;height:96px;margin-bottom:0}.forge-emblem img{width:84px;height:84px}.forge-emblem:before{inset:-7px}.forge-emblem:after{inset:-12px}.loading-title{font-size:28px;margin-top:5px}.loading-subtitle{font-size:10px;gap:6px}.loading-subtitle:before,.loading-subtitle:after{width:12px}#loading-information{margin-top:14px}.progress-meta{font-size:11px;margin-top:8px}#status-notice{padding:12px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){#status,#loading-fill{transition:none}.spark,.loading-stage:after,.progress-track[data-indeterminate="true"] #loading-fill{animation:none}.spark{display:none}.progress-track[data-indeterminate="true"] #loading-fill{transform:translateX(80%)}}
+</style>
+<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png">
+<link rel="apple-touch-icon" href="index.apple-touch-icon.png">
+</head>
+<body>
+<canvas id="canvas" aria-label="铸器坊游戏">当前浏览器无法显示游戏画面。</canvas>
+<noscript><div class="no-js">请启用 JavaScript 后重新打开游戏。</div></noscript>
+<section id="status" role="status" aria-label="正在加载铸器坊" data-state="loading">
+  <div class="loading-stage">
+    <div class="forge-emblem" aria-hidden="true">
+      <img src="index.icon.png" width="136" height="136" alt="" draggable="false">
+      <i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>
+    </div>
+    <h1 class="loading-title">铸器坊</h1>
+    <p class="loading-subtitle">铁匠与侠客</p>
+    <div id="loading-information">
+      <div id="loading-track" class="progress-track" data-indeterminate="true">
+        <progress id="status-progress" class="visually-hidden" aria-label="游戏资源加载进度"></progress>
+        <span id="loading-fill" aria-hidden="true"></span>
+      </div>
+      <div class="progress-meta"><p id="loading-phase" aria-live="polite">准备炉火…</p><output id="loading-percent" aria-hidden="true">—</output></div>
+    </div>
+    <div id="status-notice" role="alert" hidden>
+      <h2 id="notice-title">炉火暂未点燃</h2>
+      <p id="notice-message">加载遇到问题，请重试。</p>
+      <details><summary>查看原因</summary><pre id="notice-detail"></pre></details>
+      <button id="loading-retry" type="button">重试</button>
+    </div>
+  </div>
+</section>
+<script>(function () {
+  'use strict';
+  const overlay = document.getElementById('status');
+  const information = document.getElementById('loading-information');
+  const progress = document.getElementById('status-progress');
+  const track = document.getElementById('loading-track');
+  const fill = document.getElementById('loading-fill');
+  const phase = document.getElementById('loading-phase');
+  const percent = document.getElementById('loading-percent');
+  const notice = document.getElementById('status-notice');
+  const message = document.getElementById('notice-message');
+  const detail = document.getElementById('notice-detail');
+  let failed = false;
+  let completed = false;
 
-body {
-	color: white;
-	background-color: black;
-	overflow: hidden;
-	touch-action: none;
-}
+  function update(current, total) {
+    if (failed || completed) return;
+    if (Number.isFinite(current) && Number.isFinite(total) && current >= 0 && total > 0) {
+      const value = Math.max(0, Math.min(100, current / total * 100));
+      progress.max = total;
+      progress.value = current;
+      track.dataset.indeterminate = 'false';
+      fill.style.width = value + '%';
+      const wholePercent = value >= 100 ? 100 : Math.min(99, Math.floor(value + 1e-7));
+      percent.textContent = wholePercent + '%';
+      phase.textContent = value >= 100 ? '开炉中…' : '备料中…';
+      progress.setAttribute('aria-valuetext', phase.textContent + ' ' + percent.textContent);
+    } else {
+      progress.removeAttribute('value');
+      progress.removeAttribute('max');
+      track.dataset.indeterminate = 'true';
+      fill.style.width = '';
+      percent.textContent = '—';
+      phase.textContent = '准备炉火…';
+      progress.setAttribute('aria-valuetext', '准备炉火');
+    }
+  }
 
-#canvas {
-	display: block;
-}
+  function fail(error, friendly) {
+    if (failed || completed) return;
+    failed = true;
+    overlay.dataset.state = 'error';
+    information.hidden = true;
+    notice.hidden = false;
+    message.textContent = friendly || '加载遇到问题，请重试。';
+    detail.textContent = error instanceof Error ? error.message : String(error || '未知错误');
+    console.error(error);
+  }
 
-#canvas:focus {
-	outline: none;
-}
+  function complete() {
+    if (failed || completed) return;
+    completed = true;
+    phase.textContent = '炉火已就绪';
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        overlay.dataset.state = 'ready';
+        overlay.classList.add('is-ready');
+        overlay.setAttribute('aria-hidden', 'true');
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          overlay.remove();
+        } else {
+          setTimeout(function () { overlay.remove(); }, 200);
+        }
+      });
+    });
+  }
 
-#status, #status-splash, #status-progress {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
-
-#status, #status-splash {
-	top: 0;
-	bottom: 0;
-}
-
-#status {
-	background-color: #242424;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	visibility: hidden;
-}
-
-#status-splash {
-	max-height: 100%;
-	max-width: 100%;
-	margin: auto;
-}
-
-#status-splash.show-image--false {
-	display: none;
-}
-
-#status-splash.fullsize--true {
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-}
-
-#status-splash.use-filter--false {
-	image-rendering: pixelated;
-}
-
-#status-progress, #status-notice {
-	display: none;
-}
-
-#status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
-}
-
-#status-notice {
-	background-color: #5b3943;
-	border-radius: 0.5rem;
-	border: 1px solid #9b3943;
-	color: #e0e0e0;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-	line-height: 1.3;
-	margin: 0 2rem;
-	overflow: hidden;
-	padding: 1rem;
-	text-align: center;
-	z-index: 1;
-}
-		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
-<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
-
-	</head>
-	<body>
-		<canvas id="canvas">
-			Your browser does not support the canvas tag.
-		</canvas>
-
-		<noscript>
-			Your browser does not support JavaScript.
-		</noscript>
-
-		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png" alt="">
-			<progress id="status-progress"></progress>
-			<div id="status-notice"></div>
-		</div>
-
-		<script src="index.js?build=web-gzip-v3"></script>
-		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.wasm":38034280,"forge-ui-063-04d38828583d23df.pck":15059184},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"mainPack":"forge-ui-063-04d38828583d23df.pck"};
+  document.getElementById('loading-retry').addEventListener('click', function () {
+    window.location.reload();
+  });
+  window.ForgeLoading = { update: update, fail: fail, complete: complete };
+  update(0, 0);
+}());
+</script>
+<script src="index.js?build=web-gzip-v3" onerror="window.ForgeLoading.fail(new Error('index.js 未能载入。'),'启动文件加载失败，请重试。')"></script>
+<script>
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.wasm":38034280,"forge-weapons-071-56076f66cba4c597.pck":15860992},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"mainPack":"forge-weapons-071-56076f66cba4c597.pck"};
 const GODOT_THREADS_ENABLED = false;
 // FORGE_PREVIEW_ENTRY_START
 const forgeEntryURL = new URL(window.location.href);
@@ -119,109 +155,35 @@ if (forgeEntryURL.searchParams.get('view') === 'forge') {
   GODOT_CONFIG.args = ['--', '--forge-preview'];
 }
 // FORGE_PREVIEW_ENTRY_END
-const engine = new Engine(GODOT_CONFIG);
-
 (function () {
-	const statusOverlay = document.getElementById('status');
-	const statusProgress = document.getElementById('status-progress');
-	const statusNotice = document.getElementById('status-notice');
-
-	let initializing = true;
-	let statusMode = '';
-
-	function setStatusMode(mode) {
-		if (statusMode === mode || !initializing) {
-			return;
-		}
-		if (mode === 'hidden') {
-			statusOverlay.remove();
-			initializing = false;
-			return;
-		}
-		statusOverlay.style.visibility = 'visible';
-		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
-		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
-		statusMode = mode;
-	}
-
-	function setStatusNotice(text) {
-		while (statusNotice.lastChild) {
-			statusNotice.removeChild(statusNotice.lastChild);
-		}
-		const lines = text.split('\n');
-		lines.forEach((line) => {
-			statusNotice.appendChild(document.createTextNode(line));
-			statusNotice.appendChild(document.createElement('br'));
-		});
-	}
-
-	function displayFailureNotice(err) {
-		console.error(err);
-		if (err instanceof Error) {
-			setStatusNotice(err.message);
-		} else if (typeof err === 'string') {
-			setStatusNotice(err);
-		} else {
-			setStatusNotice('An unknown error occurred.');
-		}
-		setStatusMode('notice');
-		initializing = false;
-	}
-
-	const missing = Engine.getMissingFeatures({
-		threads: GODOT_THREADS_ENABLED,
-	});
-
-	if (typeof DecompressionStream === 'undefined') { missing.push('请升级到新版 Chrome、Edge、Firefox 或 Safari。'); }
-	if (missing.length !== 0) {
-		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
-			let serviceWorkerRegistrationPromise;
-			try {
-				serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
-			} catch (err) {
-				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
-			}
-			// There's a chance that installing the service worker would fix the issue
-			Promise.race([
-				serviceWorkerRegistrationPromise.then((registration) => {
-					if (registration != null) {
-						return Promise.reject(new Error('Service worker already exists.'));
-					}
-					return registration;
-				}).then(() => engine.installServiceWorker()),
-				// For some reason, `getRegistration()` can stall
-				new Promise((resolve) => {
-					setTimeout(() => resolve(), 2000);
-				}),
-			]).then(() => {
-				// Reload if there was no error.
-				window.location.reload();
-			}).catch((err) => {
-				console.error('Error while registering service worker:', err);
-			});
-		} else {
-			// Display the message as usual
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
-		}
-	} else {
-		setStatusMode('progress');
-		engine.startGame({
-			'onProgress': function (current, total) {
-				if (current > 0 && total > 0) {
-					statusProgress.value = current;
-					statusProgress.max = total;
-				} else {
-					statusProgress.removeAttribute('value');
-					statusProgress.removeAttribute('max');
-				}
-			},
-		}).then(() => {
-			setStatusMode('hidden');
-		}, displayFailureNotice);
-	}
+  const loading = window.ForgeLoading;
+  try {
+    if (typeof Engine !== 'function') {
+      loading.fail(new Error('index.js 未能载入。'), '启动文件加载失败，请重试。');
+      return;
+    }
+    const engine = new Engine(GODOT_CONFIG);
+    const missing = Engine.getMissingFeatures({ threads: GODOT_THREADS_ENABLED });
+    if (missing.length !== 0) {
+      if (GODOT_CONFIG.serviceWorker && GODOT_CONFIG.ensureCrossOriginIsolationHeaders && 'serviceWorker' in navigator) {
+        let registration;
+        try { registration = navigator.serviceWorker.getRegistration(); }
+        catch (err) { registration = Promise.reject(err); }
+        Promise.race([
+          registration.then(function (existing) {
+            if (existing != null) throw new Error('Service worker already exists.');
+            return engine.installServiceWorker();
+          }),
+          new Promise(function (resolve) { setTimeout(resolve, 2000); })
+        ]).then(function () { window.location.reload(); }, loading.fail);
+      } else {
+        loading.fail(new Error(missing.join('\n')), '当前浏览器暂不支持运行此游戏。');
+      }
+      return;
+    }
+    engine.startGame({ onProgress: loading.update }).then(loading.complete, loading.fail);
+  } catch (err) { loading.fail(err); }
 }());
-		</script>
-	</body>
+</script>
+</body>
 </html>
-
