@@ -1,16 +1,16 @@
 {
   "version": "0.12.35-test-b",
-  "pack": "forge-weapons-071-56076f66cba4c597.pck",
-  "pack_sha256": "56076f66cba4c5970e63345a0c4ccf77da04d16dfce0ab07b873315fb65c4d9a",
-  "pack_bytes": 15860992,
-  "entry_path": "index.html?build=56076f66cba4c597&shell=069&view=home",
+  "pack": "forge-touch-079-ee62fcac69b6efe3.pck",
+  "pack_sha256": "ee62fcac69b6efe3a7f8559147e5bae4c425e8b65f4ca5d83e701d141f77fdc5",
+  "pack_bytes": 15913512,
+  "entry_path": "index.html?build=ee62fcac69b6efe3&shell=069&view=home",
   "published": false,
-  "variant": "final-weapon-art-071",
-  "based_on_pack_sha256": "33aeb4248f3b2e66a0505bb983276309e9bd23b3dca3d33520278686fe168aae",
+  "variant": "mobile-scroll-079",
+  "based_on_pack_sha256": "69b759fc3f777f02acb1c338cb8468ec0850bfd03372501738e0af3bd073cbdc",
   "hosting_variant": "compressed-web-v3",
   "audio_version": 9,
   "background_music": false,
-  "ux_version": 23,
+  "ux_version": 29,
   "web_audio_bus_append_fix": true,
   "distinct_navigation_purchase_sfx": true,
   "distinct_purchase_failure_sfx": true,
@@ -23,5 +23,7 @@
   "weapon_catalogue_version": 71,
   "current_weapon_count": 116,
   "added_weapon_count": 0,
-  "revised_weapon_count": 2
+  "revised_weapon_count": 2,
+  "reward_presentation_version": 5,
+  "mobile_scroll_version": 1
 }
